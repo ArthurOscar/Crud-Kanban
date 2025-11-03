@@ -8,7 +8,7 @@ $user = new User($conn);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['adicionarTarefa'])) {
         if ($_POST['descricao'] == "" || $_POST['nome_setor'] == "" || $_POST['prioridade'] == "" || $_POST['status'] == "" || $_POST['fk_usuario'] == "") {
-            echo "<script>alert('Preencha todos os campos de usuário')</script>";
+            echo "<script>alert('Preencha todos os campos')</script>";
         } else {
             if ($user->criarTarefa($_POST['descricao'], $_POST['nome_setor'], $_POST['prioridade'], $_POST['status'], $_POST['fk_usuario'])) {
                 echo "<script>alert('Tarefa inserido com sucesso!')</script>";

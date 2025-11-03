@@ -2,20 +2,27 @@
 
 include "../includes/db.php";
 include "../src/user.php";
+include "../src/apiEmail.php";
 
 $user = new User($conn);
+$email = new Email();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['adicionarUsuario'])) {
         if ($_POST['nome'] == "" || $_POST['email'] == "") {
-            echo "<script>alert('Preencha todos os campos de usuário')</script>";
+            echo "<script>alert('Preencha todos os campos')</script>";
         } else {
-            if ($user->criarUsuario($_POST['nome'], $_POST['email'])) {
-                echo "<script>alert('Usuário inserido com sucesso!')</script>";
-                header("refresh:0;");
+            if ($email->EmailVerify($_POST['email'])) {
+                if ($user->criarUsuario($_POST['nome'], $_POST['email'])) {
+                    echo "<script>alert('Usuário inserido com sucesso!')</script>";
+                    header("refresh:0;");
+                } else {
+                    echo "<script>alert('Ocorreu um erro, verifique todos os campos.')</script>";
+                    header("refresh:0;");
+                }
             } else {
-                echo "<script>alert('Ocorreu um erro, verifique todos os campos.')</script>";
-                header("refresh:0;");
+                echo "<script>alert('Email inválido!')</script>";
+                header("refresh:0");
             }
         }
     }
@@ -24,12 +31,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 ?>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User</title>
     <link rel="stylesheet" href="../style/style.css">
 </head>
+
 <body>
     <form method="POST" class="formCreate">
         <h1>Criar Usuário</h1>
@@ -39,4 +48,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <a href="read.php">Listar Registros</a>
     </form><br>
 </body>
+
 </html>
