@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="../style/style.css">
 </head>
 
-<body>
+<body class="create">
     <form method="POST" class="formCreate">
         <h1>Criar Usuário</h1>
         <input type="text" name="nome" placeholder="Nome" required><br>

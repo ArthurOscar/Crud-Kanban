@@ -14,4 +14,9 @@ try {
     echo "Conexão falhou: " . $e->getMessage();
 }
 
+if(!$conn){
+    echo "<script>alert('Crie a database')</script>";
+    header("refresh:0");
+}
+
 ?>

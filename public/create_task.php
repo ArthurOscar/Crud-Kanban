@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Criar Task</title>
     <link rel="stylesheet" href="../style/style.css">
 </head>
-<body>
+<body class="create">
     <form method="POST" class="formCreate">
         <h1>Criar Tarefa</h1>
         <input type="text" name="descricao" placeholder="Descrição" required><br>
