@@ -3,8 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Read</title>
+    <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
-    
+    <a href="create_user.php">Criar Usuário</a><br>
+    <a href="create_task.php">Criar Tarefa</a>
 </body>
 </html>
