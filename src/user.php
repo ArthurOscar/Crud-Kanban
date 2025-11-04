@@ -32,8 +32,23 @@ class User {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function delatarUsuario($id){
+        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt -> bindParam(":id", $id);
+        return $stmt->execute();
+    }
+
+    public function conferirTarefas($id){
+        $sql = "SELECT * FROM tarefas WHERE fk_usuario = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt -> bindParam(":id", $id);
+        $stmt->execute();
+        $quantidade = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        return count($quantidade) === 0;
+    }
 }
-
-
 
 ?>

@@ -31,9 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST
 </head>
 
 <body class="read">
-    <nav>
-        <a href="create_user.php">Criar Usuário</a><br>
+    <nav class="nav">
+        <a href="create_user.php">Criar Usuário</a>
         <a href="create_task.php">Criar Tarefa</a>
+        <a href="delete.php">Deletar Usuário</a>
     </nav>
     <main class="main_read">
         <section class="tableList">
